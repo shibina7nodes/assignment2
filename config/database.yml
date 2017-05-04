@@ -10,11 +10,11 @@ default: &default
 
 development:
   <<: *default
-  database: student_development
+  database: archive_development
 
 test:
   <<: *default
-  database: student_test
+  database: archive_test
 
 production:
   <<: *default

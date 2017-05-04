@@ -1,42 +1,38 @@
-<b><i><u><center><font size="500"><font color="black"> Welcom To Form Page</font></font></center></u></i></b>
+<b><i><u><center><font size="500"><font color="black"> Welcom To Signup Page</font></font></center></u></i></b>
 
 <style type="text/css">
 body {
   background-color: skyblue;
 }
-
 </style>
-
-
 <%= form_for(@student) do |f| %>
-
-
   <div class="field">
-    <%= f.label :name  %>
-    <%= f.text_field :name  %>
+    <%= f.label :Username  %>
+    <%= f.text_field :username  %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :Address%>
-    <%= f.text_field :address %>
+    <%= f.label :Password%>
+    <%= f.password_field :password %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :email  %>
+    <%= f.label :Confrimpassword  %>
+    <%= f.password_field :password  %>
+  </div>
+  <div class="field">
+    <%= f.label :Email  %>
     <%= f.text_field :email %>
   </div>
   </p>
   <br>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Account" %>
   </div> 
-  <ul>
-
-  <li><a href="listing">listing</a></li>
-
-
+  <% end %>
+<ul>
+  <li><a href="/login">Sign in</a></li>
 </ul>
-<% end %>
 <!--<body background="/home/user/Downloads/p.jpg">
 </body>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-   root "students#form"
+   root "students#login"
   get "/form" => "students#form"
-  get "/listing" => "students#listing"
-  get "/details" => "students#details"
+  get "/login" => "students#login"
+  post "/relocate" => "students#relocate"
+  #get "/lo" => "studentsession#login"
+  #get "/listing" => "students#listing"
+  #get "/details" => "students#details"
   resource :students
 end
