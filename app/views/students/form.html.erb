@@ -1,38 +1,69 @@
-<b><i><u><center><font size="500"><font color="black"> Welcom To Signup Page</font></font></center></u></i></b>
-
+<b><i><u><center><font size="500"><font color="black"> Signup</font></font></center></u></i></b> 
+<%= notice %>
 <style type="text/css">
-body {
-  background-color: skyblue;
-}
+body 
+  {
+    background-color: skyblue;
+  }
+table
+  {
+      
+      padding-top: 10px;
+      border: 1px solid black;
+    outline-color: red;
+     outline-width: 5px
+     background-color:yellow;
+    
+  }
+  tr:hover
+  {background-color:#f5f5f5}
+
+
 </style>
+<!--   assuming @post is the form variable  -->
+  <%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> 
+        prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table align="center">
 <%= form_for(@student) do |f| %>
-  <div class="field">
-    <%= f.label :Username  %>
-    <%= f.text_field :username  %>
-  </div>
+  <tr>
+    <div class="field">
+   <td> <%= f.label :Username  %></td>
+    <td><%= f.text_field :username  %></td>
+  </tr>
 <br>
-  <div class="field">
-    <%= f.label :Password%>
-    <%= f.password_field :password %>
-  </div>
+  <tr>
+   <td> <%= f.label :Password%> </td>
+   <td> <%= f.password_field :password %></td>
+  </tr>
 <br>
-  <div class="field">
-    <%= f.label :Confrimpassword  %>
-    <%= f.password_field :password  %>
-  </div>
-  <div class="field">
-    <%= f.label :Email  %>
-    <%= f.text_field :email %>
-  </div>
+  <tr>
+   <td> <%= f.label :Confrimpassword  %></td>
+   <td> <%= f.password_field :cpassword  %></td>
+  </tr>
+   <br>
+  <tr>
+   <td> <%= f.label :Email  %> </td>
+  <td>  <%= f.text_field :email %></td>
+  </tr>
   </p>
   <br>
 
-  <div class="actions">
-    <%= f.submit "Create Account" %>
+  <tr>
+   <td> <%= f.submit "Create Account" %></td><td></td>
+   <td><a href="/login">Sign in</a></td>
+   </tr>
   </div> 
   <% end %>
-<ul>
-  <li><a href="/login">Sign in</a></li>
-</ul>
-<!--<body background="/home/user/Downloads/p.jpg">
-</body>
+  <% end %>
+  </table>

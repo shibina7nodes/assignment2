@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   
-  def login
-    @student=Student.new
-    end
+   def login
+     @student=Student.new
+   end
   
 
 	def form
@@ -22,10 +22,12 @@ class StudentsController < ApplicationController
 	end
 
   def valid
-       user = Student.find_by_email(params[:student][:username])
-       password=User.find_by_password(params[:student][:password])
+       user = Student.find_by_username(params[:student][:username])
+       password=Student.find_by_password(params[:student][:password])
      if user && password
            redirect_to "/relocate"
+          else
+           redirect_to "/login"
       end
   end
 
@@ -43,10 +45,16 @@ class StudentsController < ApplicationController
   
   def create
   	@student = Student.new(student_params)
-		if @student.save
-      redirect_to form_path 
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to "/form", notice: 'Student was successfully created.' }
+        format.json { render :show, status: :created, location: @student }
+      else
+        format.html { render :form}
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
     end
-  end
+    end
   
 
 
