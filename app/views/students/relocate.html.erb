@@ -1,1 +1,10 @@
-<h1>hai</h1>
+<%= form_for(@goal) do |f| %>
+<div class="actions">
+	<%= f.label "Do you want to create goal?click here.." %>
+    <%= f.submit "Create Goal" %>
+ </div> 
+ <div class="actions">
+ 	<%= f.label "Do you want to view goals?click here.." %>
+    <%= f.submit "View History" %>
+ </div>
+ <% end %>

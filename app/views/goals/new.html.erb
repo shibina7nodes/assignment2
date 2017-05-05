@@ -1,0 +1,59 @@
+<!-- <b><i><u><center><font size="500"><font color="black"> </font></font></center></u></i></b>  -->
+<%= notice %>
+<style type="text/css">
+body 
+  {
+    background-color: pink;
+  }
+table
+  {
+      
+      padding-top: 10px;
+      border: 2px solid black;
+    outline-color: red;
+     outline-width: 5px
+     background-color:yellow;
+    
+  }
+  /*tr:hover
+  {background-color:#f5f5f5}
+*/
+
+</style>
+<!--   assuming @post is the form variable  -->
+  <%= form_for(@goal) do |f| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@goal.errors.count, "error") %> 
+        prohibited this goal from being saved:</h2>
+
+      <ul>
+      <% @goal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table align="center">
+<%= form_for(@goal) do |f| %>
+  <tr>
+    <div class="field">
+    <td><%= f.text_field :goals, placeholder: "Enter Goal:" %></td>
+  </tr>
+<br>
+  <tr>
+   <td> <%= f.text_field :start_date, value: Date.today %></td>
+  </tr>
+<br>
+  <tr>
+   <td> <%= f.text_field :last_date, placeholder: "Ending_date" %></td>
+  </tr>
+  <br>
+
+  <tr>
+   <td> <%= f.submit "Create Goal" %></td><td></td>
+   </tr>
+  </div> 
+  <% end %>
+  <% end %>
+  </table>

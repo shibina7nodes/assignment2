@@ -3,5 +3,6 @@ class Student < ApplicationRecord
 	validates :password, presence:true 
 	validates :cpassword, presence:true 
 	validates :email, presence:true 
+	# has_many :goals
 
 end

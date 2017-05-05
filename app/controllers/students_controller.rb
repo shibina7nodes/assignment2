@@ -12,36 +12,37 @@ class StudentsController < ApplicationController
   	end
 
 
-  	def listing
-		@student=Student.all
-    	puts "listing"
-  	end
+  # 	def listing
+		# @student=Student.all
+  #   	puts "listing"
+  # 	end
 
-  def details
-  	@student=Student.find(params[:id])
-	end
+ #  def details
+ #  	@student=Student.find(params[:id])
+	# end
 
   def valid
        user = Student.find_by_username(params[:student][:username])
        password=Student.find_by_password(params[:student][:password])
      if user && password
-           redirect_to "/relocate"
+          session[:current_user]=user
+           redirect_to "/new"
           else
            redirect_to "/login"
       end
   end
 
-  	def update
-    	respond_to do |format|
-      		if @user.update(user_params)
-          	format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-          	format.json { render :show, status: :ok, location: @article }
-      		else
-        	  format.html { render :edit }
-        	  format.json { render json: @article.errors, status: :unprocessable_entity }
-      		end
-    	end
-  	end
+  	# def update
+   #  	respond_to do |format|
+   #    		if @user.update(user_params)
+   #        	format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+   #        	format.json { render :show, status: :ok, location: @article }
+   #    		else
+   #      	  format.html { render :edit }
+   #      	  format.json { render json: @article.errors, status: :unprocessable_entity }
+   #    		end
+   #  	end
+  	# end
   
   def create
   	@student = Student.new(student_params)
@@ -51,7 +52,7 @@ class StudentsController < ApplicationController
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :form}
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+        format.json { render json: @student.errors, status: 'login failed' }
       end
     end
     end
